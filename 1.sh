@@ -23,7 +23,7 @@ function repack(){
 }
 
 function getEventKey() {
- local event_input=$(getevent -qlc 1 | awk '{ print $3 }')
+  event_input=$(getevent -qlc 1 | awk '{ print $3 }')
  if [[ "$event_input" == "KEY_VOLUMEUP" ]]; then
   echo "+"
  elif [[ "$event_input" == "KEY_VOLUMEDOWN" ]]; then
@@ -32,7 +32,7 @@ function getEventKey() {
 }
 
 function getIMGPath() {
- local IMGFile=$1
+  IMGFile=$1
  if [ -e "/dev/block/bootdevice/by-name/$IMGFile" ]; then
   echo "/dev/block/bootdevice/by-name/$IMGFile"
   return
@@ -83,7 +83,7 @@ suffix="$(getprop ro.boot.slot_suffix)"
 }
 #echo_color "分区路径为：$(getIMGPath boot${boot_suffix})"
 
-local init_boot=$(getIMGPath "boot${suffix}")
+init_boot=$(getIMGPath "boot${suffix}")
 if [ -n "$init_boot" ] && [ -e "$init_boot" ]; then
  echo_color "存在 init_boot 分区"
  mkdir -p $tmp/backup
